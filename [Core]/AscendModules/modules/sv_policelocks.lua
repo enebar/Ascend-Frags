@@ -1,0 +1,42 @@
+-- local Proxy = module("CLIMB", "lib/Proxy")
+-- CLIMB = Proxy.getInterface("CLIMB")
+-- local cfg = module("CLIMBModules", "cfg/cfg_locks")
+
+-- AddEventHandler("CLIMB:playerSpawn",function(user_id,source,first_spawn)
+-- 	if first_spawn then
+-- 		TriggerClientEvent('CLIMB:load', source, cfglocks.list)
+-- 	end
+-- end)
+
+-- Citizen.CreateThread(function()
+--   Citizen.Wait(1000)
+--   TriggerClientEvent('CLIMB:load', -1, cfglocks.list)
+-- end)
+
+-- RegisterServerEvent('CLIMB:open')
+-- AddEventHandler('CLIMB:open', function(id)
+-- 	local user_id = CLIMB.getUserId({source})
+-- 	local player = CLIMB.getUserSource({user_id})
+-- 	if CLIMB.hasPermission({user_id, "#"..cfglocks.list[id].key..".>0"}) or CLIMB.hasPermission({user_id,cfglocks.list[id].permission}) then
+-- 		SetTimeout(100, function()
+-- 			cfglocks.list[id].locked = not cfglocks.list[id].locked
+-- 			TriggerClientEvent('CLIMB:statusSend', (-1), id,cfglocks.list[id].locked)
+-- 			if cfglocks.list[id].pair ~= nil then
+-- 				local idsecond = cfglocks.list[id].pair
+-- 				cfglocks.list[idsecond].locked = cfglocks.list[id].locked
+-- 				TriggerClientEvent('CLIMB:statusSend', (-1), idsecond,cfglocks.list[id].locked)
+-- 			end
+-- 			if cfglocks.list[id].locked then
+-- 				CLIMBclient.notify(player, {"~w~You ~d~closed ~w~the door."})
+--             elseif not cfglocks.list[id].locked then
+-- 				CLIMBclient.notify(player, {"~w~You ~g~opened ~w~the door."})
+-- 			end
+-- 		end)
+-- 	else
+-- 		if cfglocks.list[id].keyname ~= nil then
+-- 			CLIMBclient.notify(player, {"~d~You are not clocked on!"})
+-- 		else
+-- 			CLIMBclient.notify(player, {"~d~You are not police!"})
+-- 		end
+-- 	end
+-- end)
